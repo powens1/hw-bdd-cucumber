@@ -27,12 +27,18 @@ Scenario: restrict to movies with 'PG' or 'R' ratings
   #When I check "ratings_PG"
   #When I check "ratings_R"
   # enter step(s) to uncheck all other checkboxes
-  When I uncheck "ratings_G"
-  When I uncheck "ratings_PG-13"
-  When I uncheck "ratings_NC-17"
+  When I uncheck the following ratings: G PG-13 NC-17
+  #When I uncheck "ratings_G"
+  #When I uncheck "ratings_PG-13"
+  #When I uncheck "ratings_NC-17"
   # enter step to "submit" the search form on the homepage
+  And I press "Refresh"
   # enter step(s) to ensure that PG and R movies are visible
+  Then I should see "The Incredibles"
+  Then I should see "Amelie"
   # enter step(s) to ensure that other movies are not visible
+  Then I should not see "Chicken Run"
+  Then I should not see "The Help"
 
 Scenario: all ratings selected
   # see assignment
