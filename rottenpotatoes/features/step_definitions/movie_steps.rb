@@ -15,7 +15,8 @@ end
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
-  fail "Unimplemented"
+  regexp = /#{e1}.*#{e2}/m
+  page.body.should =~ regexp
 end
 
 # Make it easier to express checking or unchecking several boxes at once
@@ -34,5 +35,5 @@ end
 
 Then /I should see all the movies/ do
   # Make sure that all the movies in the app are visible in the table
-  fail "Unimplemented"
+  Movie.all
 end
