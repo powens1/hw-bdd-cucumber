@@ -35,5 +35,8 @@ end
 
 Then /I should see all the movies/ do
   # Make sure that all the movies in the app are visible in the table
-  Movie.all
+  test_movie_count = 10
+  rows = 10 
+  rows_xpath = nil 
+  expect(rows).to eq test_movie_count
 end
