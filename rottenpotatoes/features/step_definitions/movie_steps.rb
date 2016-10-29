@@ -34,9 +34,5 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
 end
 
 Then /I should see all the movies/ do
-  # Make sure that all the movies in the app are visible in the table
-  test_movie_count = 10
-  rows = 10 
-  rows_xpath = nil 
-  expect(rows).to eq test_movie_count
+  page.should have_selector('table tr', :count => 11)
 end
